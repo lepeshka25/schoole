@@ -1,8 +1,7 @@
 import React from 'react';
 import Swiper from "./components/swiper";
-import cs from './style.module.scss'
-import Contacts from "./components/Contacts";
 import InfoScholl from "./components/InfoScholl";
+import cs from './style.module.scss'
 
 const Main = () => {
 	return (
@@ -13,10 +12,6 @@ const Main = () => {
 
 			<div className={cs.container_infoSchool}>
 				<InfoScholl/>
-			</div>
-
-			<div className={cs.container_contacts}>
-				<Contacts/>
 			</div>
 		</div>
 	);
