@@ -10,6 +10,7 @@ import * as Auth from './pages/Authorization'
 
 import {Route, Routes} from "react-router-dom";
 import PrivateRouter from "./components/PrivateRouter";
+import {AuthorizationCheck} from "./components/AuthorizationCheck";
 
 const App = () => {
 	return (
@@ -21,8 +22,14 @@ const App = () => {
 					<Route path={'/'} element={<div>привет</div>}/>
 					<Route path={'/admin'} element={<div>пока</div>}/>
 				</Route>
-				<Route path={'/auth/login'} element={<Auth.Login/>}/>
-				<Route path={'/auth/register'} element={<Auth.Register/>}/>
+				<Route
+					path={'/auth/login'}
+					element={<AuthorizationCheck><Auth.Login/></AuthorizationCheck>}
+				/>
+				<Route
+					path={'/auth/register'}
+					element={<AuthorizationCheck><Auth.Login/></AuthorizationCheck>}
+				/>
 				<Route path={'*'} element={<div>нету такой страницы</div>}/>
 			</Routes>
 
