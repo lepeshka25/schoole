@@ -1,0 +1,25 @@
+.footer {
+  width: 100%;
+  padding: 15px 5%;
+  box-shadow: 1px 1px 10px gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: 1920px) {
+    width: 1920px;
+    margin: 0 auto;
+  }
+
+  .list {
+    display: flex;
+    align-items: center;
+    li {
+      margin: 0 10px;
+      .icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}

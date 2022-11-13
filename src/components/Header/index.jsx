@@ -1,14 +1,13 @@
 import React from 'react';
 import SideBar from "./components/SideBar";
+import LOGO from "../../UI/LOGO";
 import cs from './style.module.scss'
 
 const Header = () => {
 	const [sideBar , setSideBar] = React.useState(false)
 	return (
 		<div className={cs.header}>
-			<div className={cs.logo}>
-				<h1>SCH<span>OOL</span></h1>
-			</div>
+			<LOGO/>
 			<div className={cs.avatar}>
 				<img
 					onClick={() => setSideBar(state => !state)}

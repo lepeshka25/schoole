@@ -1,22 +1,17 @@
+import {BsFacebook, BsInstagram} from "react-icons/bs";
+import {FaTelegram} from "react-icons/fa";
+
 export const list = [
 	{
 		id: 1,
-		title: 'Главная',
-		path: '/'
+		icon: BsInstagram
 	},
 	{
 		id: 2,
-		title: 'Админ',
-		path: '/'
+		icon: FaTelegram
 	},
 	{
 		id: 3,
-		title: 'Главная',
-		path: '/'
-	},
-	{
-		id: 4,
-		title: 'Главная',
-		path: '/'
+		icon: BsFacebook
 	},
 ]
