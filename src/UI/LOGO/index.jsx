@@ -1,10 +1,11 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import cs from './style.module.scss'
 
 const LOGO = () => {
 	return (
 		<div className={cs.logo}>
-			<h1>SCH<span>OOL</span></h1>
+			<Link to={'/'} className={cs.link}>SCH<span>OOL</span></Link>
 		</div>
 	);
 };

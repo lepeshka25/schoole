@@ -1,9 +1,12 @@
 import React from 'react';
 import SideBar from "./components/SideBar";
 import LOGO from "../../UI/LOGO";
+import {useLogin} from "../../hooks/useLogin";
 import cs from './style.module.scss'
 
 const Header = () => {
+	const {data} = useLogin()
+
 	const [sideBar , setSideBar] = React.useState(false)
 	return (
 		<div className={cs.header}>
@@ -11,7 +14,11 @@ const Header = () => {
 			<div className={cs.avatar}>
 				<img
 					onClick={() => setSideBar(state => !state)}
-					src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+					src={
+						data?.photoURL
+							? data.photoURL
+							: 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'
+					}
 					alt=""
 				/>
 				<SideBar setSideBar={setSideBar} sideBar={sideBar}/>

@@ -1,0 +1,45 @@
+.admin {
+  width: 100%;
+  position: relative;
+
+  @media (min-width: 1920px) {
+    width: 1920px;
+    margin: 0 auto;
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container_table {
+    width: 100%;
+    padding: 300px 0;
+    display: flex;
+    justify-content: center;
+    .table {
+      width: 90%;
+      font-family: 'Roboto', sans-serif;
+      border-collapse: collapse;
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+    }
+  }
+
+  .icon {
+    position: absolute;
+    bottom: 1.5em;
+    right: 1.5em;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+}
