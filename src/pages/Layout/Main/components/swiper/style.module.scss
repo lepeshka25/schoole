@@ -1,0 +1,36 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .arrowLeft, .arrowRight {
+    position: absolute;
+    cursor: pointer;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    color: black;
+    border: 1px solid black;
+  }
+
+  .arrowLeft {
+    top: 50%;
+    left: 1em;
+    transform: translateY(-50%);
+  }
+
+  .arrowRight {
+    top: 50%;
+    right: 1em;
+    transform: translateY(-50%);
+  }
+
+}
