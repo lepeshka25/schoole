@@ -1,3 +1,6 @@
+import React from "react";
+import {Auth} from "../Provider/AuthProvider";
+
 export const useLogin = () => {
-	// return
+	return React.useContext(Auth)
 }
