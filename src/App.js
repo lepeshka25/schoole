@@ -29,6 +29,7 @@ const App = () => {
 				<Route path={'/'} element={<PrivateRouter/>}>
 					<Route path={'/'} element={<Layout.Main/>}/>
 					<Route path={'/admin'} element={<Layout.Admin/>}/>
+					<Route path={'/admin/class/:id'} element={<Layout.Class/>}/>
 				</Route>
 				<Route
 					path={'/auth/login'}
