@@ -10,7 +10,7 @@ const Admin = () => {
 	const navigate = useNavigate()
 	const [stateModal, setStateModal] = React.useState(false)
 
-	if(!dataBase?.class){
+	if (!dataBase?.class) {
 		return (
 			<div className={cs.container_pusto}>
 				<h1>
@@ -32,21 +32,25 @@ const Admin = () => {
 					<tr>
 						<th>Класс</th>
 						<th>кол-во</th>
+						<th>Группа</th>
+						<th>Класс</th>
 					</tr>
 					</thead>
 					<tbody>
-						{
-							dataBase?.class && Object.values(dataBase.class).map(({name , num, id}, i) => (
-								<tr
-									onClick={() => navigate('/admin/class' , {state: id})}
-									className={cs.submitNavigate}
-									key={i}
-								>
-									<td>{name}</td>
-									<td>{num}</td>
-								</tr>
-							))
-						}
+					{
+						Object.values(dataBase.class).map(({className,group, classGroup, num, id}, i) => (
+							<tr
+								onClick={() => navigate('/admin/class', {state: id})}
+								className={cs.submitNavigate}
+								key={i}
+							>
+								<td>{className}</td>
+								<td>{num}</td>
+								<td>{group}</td>
+								<td>{classGroup}</td>
+							</tr>
+						))
+					}
 					</tbody>
 				</table>
 			</div>

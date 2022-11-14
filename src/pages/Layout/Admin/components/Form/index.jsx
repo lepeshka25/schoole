@@ -19,8 +19,8 @@ const ModalForm = ({setStateModal}) => {
 					.then(res => {
 						changeClassInfo(data?.uid, res?.data?.name, {
 							className: value.className,
-							class: value.class,
-							group: value.group,
+							classGroup: value.class,
+							group: value.group.toUpperCase(),
 							num: 0,
 							id: res?.data?.name
 						})
