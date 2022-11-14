@@ -15,6 +15,7 @@ const Class = () => {
 
 	React.useEffect(() => {
 		setState(dataBase?.class[location.state]?.people)
+		// eslint-disable-next-line
 	}, [dataBase])
 
 	function onDeletePeople(...value) {
