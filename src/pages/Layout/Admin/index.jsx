@@ -6,8 +6,23 @@ import cs from './style.module.scss'
 
 const Admin = () => {
 	const {dataBase} = useLogin()
-	// const [teacherData, setTeacherData] = React.useState(null)
 	const [stateModal, setStateModal] = React.useState(false)
+
+	console.log(stateModal)
+
+	if(!dataBase?.class){
+		return (
+			<div className={cs.container_pusto}>
+				<h1>
+					Создать класс =>
+					<BsPlusLg onClick={() => setStateModal(true)} className={cs.icon}/>
+				</h1>
+				<div style={stateModal ? {display: 'block'} : {display: 'none'}}>
+					<ModalForm setStateModal={setStateModal}/>
+				</div>
+			</div>
+		)
+	}
 
 	return (
 		<div className={cs.admin}>
