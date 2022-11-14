@@ -100,6 +100,15 @@
     cursor: pointer;
   }
 
+  .select {
+    position: absolute;
+    padding: 10px 20px;
+    top: 2em;
+    left: 2em;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+
 }
 
 .container {

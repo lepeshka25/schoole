@@ -4,6 +4,7 @@ import {useLogin} from "../../../hooks/useLogin";
 import ModalForm from "./components/ModalForm";
 import {BsPlusLg} from "react-icons/bs";
 import {deleteClass, deletePeople} from "../../../API";
+import Card from "./components/Card";
 import cs from './style.module.scss'
 
 const Class = () => {
@@ -12,11 +13,64 @@ const Class = () => {
 	const {dataBase, data, setUpdate} = useLogin()
 	const [state, setState] = React.useState(null)
 	const [stateModal, setStateModal] = React.useState(false)
+	const [select , setSelect] = React.useState('name')
+	const [card , setCard] = React.useState(null)
 
 	React.useEffect(() => {
-		setState(dataBase?.class[location.state]?.people)
+		if(dataBase?.class[location.state]?.people){
+			setState(Object.values(dataBase?.class[location.state]?.people))
+		}
 		// eslint-disable-next-line
-	}, [dataBase])
+	}, [dataBase, select])
+
+	React.useEffect(() => {
+		if(select === 'age'){
+			let data = state?.sort((a , b) => {
+				if(+a.age < +b.age){
+					return 1
+				}else {
+					return -1
+				}
+			})
+			setCard(data)
+		}else if(select === 'name') {
+			let data = state?.sort((a , b) => {
+				if(a.name > b.name){
+					return 1
+				}else {
+					return -1
+				}
+			})
+			setCard(data)
+		}else if(select === 'lastName') {
+			let data = state?.sort((a , b) => {
+				if(a.lastName > b.lastName){
+					return 1
+				}else {
+					return -1
+				}
+			})
+			setCard(data)
+		}else if(select === 'group') {
+			let data = state?.sort((a , b) => {
+				if(a.group > b.group){
+					return 1
+				}else {
+					return -1
+				}
+			})
+			setCard(data)
+		}else if(select === 'class') {
+			let data = state?.sort((a , b) => {
+				if(+a.classGroup < +b.classGroup){
+					return 1
+				}else {
+					return -1
+				}
+			})
+			setCard(data)
+		}
+	}, [state , select])
 
 	function onDeletePeople(...value) {
 		deletePeople(value[0], value[1], value[2])
@@ -55,44 +109,14 @@ const Class = () => {
 
 	return (
 		<div className={cs.class}>
-			<div className={cs.container_card}>
 
-				{
-					Object.values(state).map((item, index) => (
-						<div key={index} className={cs.card}>
-							<div className={cs.card_header}>
-								<img src={item.url} alt=""/>
-							</div>
-							<div className={cs.card_body}>
-								<p>
-									<span>Имя:</span> <span>{item.name}</span>
-								</p>
-								<p>
-									<span>Фамилия:</span> <span>{item.lastName}</span>
-								</p>
-								<p>
-									<span>Возраст:</span> <span>{item.age} годиков</span>
-								</p>
-								<p>
-									<span>Группа:</span> <span>{item.group}</span>
-								</p>
-								<p>
-									<span>Класс:</span> <span>{item.classGroup}</span>
-								</p>
-							</div>
-							<div className={cs.card_footer}>
-								<button>изменить</button>
-								<button onClick={() => onDeletePeople(data?.uid, location.state, item.id)}>удалить</button>
-							</div>
-						</div>
-					))
-				}
-
-			</div>
-
-			<div style={stateModal ? {display: 'block'} : {display: 'none'}}>
-				<ModalForm setStateModal={setStateModal}/>
-			</div>
+			<select onChange={e => setSelect(e.target.value)} className={cs.select}>
+				<option value="name">Name</option>
+				<option value="lastName">LastName</option>
+				<option value="age">age</option>
+				<option value="group">group</option>
+				<option value="class">class</option>
+			</select>
 
 			<button
 				onClick={() => onDeleteClass(data?.uid , location.state)}
@@ -101,12 +125,18 @@ const Class = () => {
 				удалить класс
 			</button>
 
+			<Card cs={cs} card={card} onDeletePeople={onDeletePeople} data={data} location={location}/>
+
+			<div style={stateModal ? {display: 'block'} : {display: 'none'}}>
+				<ModalForm setStateModal={setStateModal}/>
+			</div>
+
 			<BsPlusLg onClick={() => setStateModal(true)} className={cs.icon}/>
 		</div>
 	);
 };
 
-export default Class;
+export default React.memo(Class);
 
 // <table className={cs.table}>*/}
 // 	{/*	<thead>*/}
