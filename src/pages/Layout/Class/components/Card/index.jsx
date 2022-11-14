@@ -1,9 +1,7 @@
 import React from 'react';
 
-const Card = ({cs, card , onDeletePeople , data , location}) => {
-	React.useEffect(() => {
+const Card = ({cs, card , onDeletePeople , data , location, setStateChangePeopleModal}) => {
 
-	}, [card])
 	return (
 		<div className={cs.container_card}>
 
@@ -31,7 +29,7 @@ const Card = ({cs, card , onDeletePeople , data , location}) => {
 							</p>
 						</div>
 						<div className={cs.card_footer}>
-							<button>изменить</button>
+							<button onClick={() => setStateChangePeopleModal({state: true, storage: item.id})}>изменить</button>
 							<button onClick={() => onDeletePeople(data?.uid, location.state, item.id)}>удалить</button>
 						</div>
 					</div>

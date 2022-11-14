@@ -5,6 +5,7 @@ import ModalForm from "./components/ModalForm";
 import {BsPlusLg} from "react-icons/bs";
 import {deleteClass, deletePeople} from "../../../API";
 import Card from "./components/Card";
+import ChangePeopleForm from "./components/ChangePeopleForm";
 import cs from './style.module.scss'
 
 const Class = () => {
@@ -15,6 +16,9 @@ const Class = () => {
 	const [stateModal, setStateModal] = React.useState(false)
 	const [select , setSelect] = React.useState('name')
 	const [card , setCard] = React.useState(null)
+	const [stateChangePeopleModal , setStateChangePeopleModal] = React.useState({state: false , storage: null})
+
+	console.log(stateChangePeopleModal)
 
 	React.useEffect(() => {
 		if(dataBase?.class[location.state]?.people){
@@ -125,10 +129,24 @@ const Class = () => {
 				удалить класс
 			</button>
 
-			<Card cs={cs} card={card} onDeletePeople={onDeletePeople} data={data} location={location}/>
+			<Card
+				setStateChangePeopleModal={setStateChangePeopleModal}
+				cs={cs}
+				card={card}
+				onDeletePeople={onDeletePeople}
+				data={data}
+				location={location}
+			/>
 
 			<div style={stateModal ? {display: 'block'} : {display: 'none'}}>
 				<ModalForm setStateModal={setStateModal}/>
+			</div>
+
+			<div style={stateChangePeopleModal.state ? {display: 'block'} : {display: 'none'}}>
+				<ChangePeopleForm
+					stateChangePeopleModal={stateChangePeopleModal}
+					setStateChangePeopleModal={setStateChangePeopleModal}
+				/>
 			</div>
 
 			<BsPlusLg onClick={() => setStateModal(true)} className={cs.icon}/>
@@ -137,20 +155,3 @@ const Class = () => {
 };
 
 export default React.memo(Class);
-
-// <table className={cs.table}>*/}
-// 	{/*	<thead>*/}
-// 	{/*	<tr>*/}
-// 	{/*		<th>Имя</th>*/}
-// 	{/*		<th>Фамилия</th>*/}
-// 	{/*		<th>Возраст</th>*/}
-// 	{/*	</tr>*/}
-// 	{/*	</thead>*/}
-// 	{/*	<tbody>*/}
-// 	{/*	<tr>*/}
-// 	{/*		<td>Ruslan</td>*/}
-// 	{/*		<td>Muratbekov</td>*/}
-// 	{/*		<td>18</td>*/}
-// 	{/*	</tr>*/}
-// 	{/*	</tbody>*/}
-// 	{/*</table>
