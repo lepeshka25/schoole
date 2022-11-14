@@ -5,26 +5,29 @@ import ModalForm from "./components/Form";
 import cs from './style.module.scss'
 
 const Admin = () => {
-	// const {data} = useLogin()
-	// console.log(data.uid)
-
-	const [stateModal , setStateModal] = React.useState(false)
+	const {data , dataBase} = useLogin()
+	const [teacherData, setTeacherData] = React.useState(null)
+	const [stateModal, setStateModal] = React.useState(false)
 
 	return (
 		<div className={cs.admin}>
 			<div className={cs.container_table}>
 				<table className={cs.table}>
 					<thead>
-						<tr>
-							<th>Класс</th>
-							<th>кол-во</th>
-						</tr>
+					<tr>
+						<th>Класс</th>
+						<th>кол-во</th>
+					</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Alfreds Futterkiste</td>
-							<td>Maria Anders</td>
-						</tr>
+						{
+							dataBase?.class && Object.values(dataBase.class).map(({name , num}, i) => (
+								<tr key={i}>
+									<td>{name}</td>
+									<td>{num}</td>
+								</tr>
+							))
+						}
 					</tbody>
 				</table>
 			</div>

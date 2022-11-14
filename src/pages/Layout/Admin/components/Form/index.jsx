@@ -1,13 +1,21 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
+import {changeClassInfo, createClass} from "../../../../../API";
+import {useLogin} from "../../../../../hooks/useLogin";
 import cs from './style.module.scss'
 
 const ModalForm = ({setStateModal}) => {
-	const {register, setError, handleSubmit, formState: {errors}, reset} = useForm();
+	const {data, setUpdate} = useLogin()
+	const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
-	const onSubmit = (data, e) => {
+	const onSubmit = (value, e) => {
 		e.preventDefault()
-
+		createClass(data?.uid, {name: value.class, num: 0})
+			.then(res => {
+				changeClassInfo(data?.uid, res?.data?.name, {name: value.class, num: 0, id: res?.data?.name})
+					.then(res => setUpdate(state => !state))
+			})
+		reset()
 	}
 
 	return (

@@ -4,6 +4,7 @@ import {getAuth, signInWithRedirect, GoogleAuthProvider, signOut} from 'firebase
 const firebaseConfig = {
 	apiKey: "AIzaSyAzZVipGYtvKVO27rf2HELDM79ZBrGydVk",
 	authDomain: "schoole-b8715.firebaseapp.com",
+	databaseURL: "https://schoole-b8715-default-rtdb.firebaseio.com",
 	projectId: "schoole-b8715",
 	storageBucket: "schoole-b8715.appspot.com",
 	messagingSenderId: "546734154124",
