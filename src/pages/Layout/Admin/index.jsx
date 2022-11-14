@@ -2,10 +2,12 @@ import React from 'react';
 import {BsPlusLg} from "react-icons/bs";
 import {useLogin} from "../../../hooks/useLogin";
 import ModalForm from "./components/Form";
+import {useNavigate} from "react-router-dom";
 import cs from './style.module.scss'
 
 const Admin = () => {
 	const {dataBase} = useLogin()
+	const navigate = useNavigate()
 	const [stateModal, setStateModal] = React.useState(false)
 
 	if(!dataBase?.class){
@@ -34,8 +36,12 @@ const Admin = () => {
 					</thead>
 					<tbody>
 						{
-							dataBase?.class && Object.values(dataBase.class).map(({name , num}, i) => (
-								<tr key={i}>
+							dataBase?.class && Object.values(dataBase.class).map(({name , num, id}, i) => (
+								<tr
+									onClick={() => navigate('/admin/class' , {state: id})}
+									className={cs.submitNavigate}
+									key={i}
+								>
 									<td>{name}</td>
 									<td>{num}</td>
 								</tr>

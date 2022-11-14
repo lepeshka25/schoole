@@ -31,6 +31,14 @@
         padding: 8px;
       }
 
+      .submitNavigate {
+        cursor: pointer;
+        &:hover {
+          background: rgba(0, 0, 0, 0.2);
+          color: white;
+        }
+      }
+
     }
   }
 

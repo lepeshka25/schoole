@@ -1,0 +1,112 @@
+.class {
+  width: 100%;
+
+  @media (min-width: 1920px) {
+    width: 1920px;
+    margin: 0 auto;
+  }
+
+  .container_card {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 150px 0;
+
+    .card {
+      width: 300px;
+      height: 300px;
+      background: white;
+      box-shadow: 1px 1px 10px rgba(128, 128, 128, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+
+      .card_header {
+        width: 100%;
+        height: 50%;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .card_body {
+        width: 100%;
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 0 20px;
+
+        p {
+          border-bottom: 1px solid gray;
+          display: flex;
+          justify-content: space-between;
+          spab {
+            display: inline-block;
+          }
+        }
+      }
+
+      .card_footer {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 10%;
+
+        button {
+          width: 50%;
+          height: 100%;
+          text-transform: uppercase;
+          font-weight: 800;
+          cursor: pointer;
+          border: none;
+
+          &:nth-child(1){
+            background: rgba(36, 143, 36, 0.59);
+            color: white;
+          }
+
+          &:nth-child(2){
+            background: red;
+            color: white;
+          }
+
+        }
+      }
+
+    }
+  }
+
+  //.container_table {
+  //  width: 100%;
+  //  padding: 300px 0;
+  //  display: flex;
+  //  justify-content: center;
+  //  .table {
+  //    width: 90%;
+  //    font-family: 'Roboto', sans-serif;
+  //    border-collapse: collapse;
+  //
+  //    tr:nth-child(even) {
+  //      background-color: #dddddd;
+  //    }
+  //
+  //    td, th {
+  //      border: 1px solid #dddddd;
+  //      text-align: left;
+  //      padding: 8px;
+  //    }
+  //
+  //    .submitNavigate {
+  //      cursor: pointer;
+  //      &:hover {
+  //        background: rgba(0, 0, 0, 0.2);
+  //        color: white;
+  //      }
+  //    }
+  //
+  //  }
+  //}
+
+}
