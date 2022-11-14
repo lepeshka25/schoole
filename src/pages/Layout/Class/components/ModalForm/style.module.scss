@@ -8,6 +8,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
+
+  @media (min-width: 1920px) {
+    width: 1920px;
+    margin: 0 auto;
+    height: 1000px;
+    position: absolute;
+  }
 
   .form_container {
     width: 300px;

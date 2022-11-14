@@ -1,22 +1,47 @@
 import React from 'react';
-import cs from './style.module.scss'
 import {useForm} from "react-hook-form";
+import {changePeopleInfo, createPeople} from "../../../../../API";
+import {useLogin} from "../../../../../hooks/useLogin";
+import {useLocation} from "react-router-dom";
+import cs from './style.module.scss'
 
-const ModalForm = () => {
+const ModalForm = ({setStateModal}) => {
+	const {data, setUpdate} = useLogin()
+	const location = useLocation()
 	const {register, setError, handleSubmit, formState: {errors}, reset} = useForm();
 
-	const onSubmit = (data, e) => {
-		e.preventDefault()
-		if (data.class >= 1 && data.class <= 11) {
+	const groupList = ['A', 'B', 'C', 'D']
 
-			reset()
+	const onSubmit = (value, e) => {
+		e.preventDefault()
+
+		if (groupList.includes(value.group.toUpperCase())) {
+			if (value.class >= 1 && value.class <= 11) {
+				createPeople(data?.uid, location.state)
+					.then(res => {
+						changePeopleInfo(data?.uid, location.state, res?.data?.name, {
+							name: value.name,
+							lastName: value.lastName,
+							age: value.age,
+							classGroup: value.class,
+							group: value.group.toUpperCase(),
+							url: value.URL,
+							id: res?.data?.name
+						})
+							.then(res => setUpdate(state => !state))
+					})
+				reset()
+			} else {
+				setError('class', {type: 'custom', message: 'есть классы с 1 до 11'});
+			}
 		} else {
-			setError('class', {type: 'custom', message: 'есть классы с 1 до 11'});
+			setError('group', {type: 'custom', message: 'есть группы только (A , B , C ,D)'});
 		}
+
 	}
 
 	return (
-		<div onClick={() => console.log('close modal')} className={cs.form}>
+		<div onClick={() => setStateModal(false)} className={cs.form}>
 			<form
 				onClick={e => e.stopPropagation()}
 				onSubmit={handleSubmit(onSubmit)}
@@ -24,7 +49,7 @@ const ModalForm = () => {
 			>
 
 				<div className={cs.container_title}>
-					<h2>Создать класс</h2>
+					<h2>Создать ученика</h2>
 				</div>
 
 				<div className={cs.container_input}>

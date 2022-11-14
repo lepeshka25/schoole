@@ -15,7 +15,7 @@ const ModalForm = ({setStateModal}) => {
 
 		if(groupList.includes(value.group.toUpperCase())){
 			if(value.class >= 1 && value.class <= 11){
-				createClass(data?.uid, {name: value.class, num: 0})
+				createClass(data?.uid)
 					.then(res => {
 						changeClassInfo(data?.uid, res?.data?.name, {
 							className: value.className,
