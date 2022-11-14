@@ -22,6 +22,7 @@ const AuthProvider = ({children}) => {
 			}
 
 		})
+		// eslint-disable-next-line
 	}, [auth])
 
 	React.useEffect(() => {

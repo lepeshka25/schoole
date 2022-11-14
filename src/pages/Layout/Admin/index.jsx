@@ -5,8 +5,8 @@ import ModalForm from "./components/Form";
 import cs from './style.module.scss'
 
 const Admin = () => {
-	const {data , dataBase} = useLogin()
-	const [teacherData, setTeacherData] = React.useState(null)
+	const {dataBase} = useLogin()
+	// const [teacherData, setTeacherData] = React.useState(null)
 	const [stateModal, setStateModal] = React.useState(false)
 
 	return (

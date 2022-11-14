@@ -15,7 +15,7 @@ import {Route, Routes} from "react-router-dom";
 import {useLogin} from "./hooks/useLogin";
 
 const App = () => {
-	const {loading, data} = useLogin()
+	const {loading} = useLogin()
 
 	if(loading){
 		return <Loading/>
