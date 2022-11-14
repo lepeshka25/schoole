@@ -8,8 +8,6 @@ const Admin = () => {
 	const {dataBase} = useLogin()
 	const [stateModal, setStateModal] = React.useState(false)
 
-	console.log(stateModal)
-
 	if(!dataBase?.class){
 		return (
 			<div className={cs.container_pusto}>
