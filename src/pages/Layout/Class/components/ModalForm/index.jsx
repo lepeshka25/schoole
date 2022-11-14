@@ -28,7 +28,9 @@ const ModalForm = ({setStateModal}) => {
 							url: value.URL,
 							id: res?.data?.name
 						})
-							.then(res => setUpdate(state => !state))
+							.then(res => {
+								setUpdate(state => !state)
+							})
 					})
 				reset()
 			} else {

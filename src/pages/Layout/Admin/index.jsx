@@ -31,21 +31,19 @@ const Admin = () => {
 					<thead>
 					<tr>
 						<th>Класс</th>
-						<th>кол-во</th>
 						<th>Группа</th>
 						<th>Класс</th>
 					</tr>
 					</thead>
 					<tbody>
 					{
-						Object.values(dataBase.class).map(({className,group, classGroup, num, id}, i) => (
+						Object.values(dataBase.class).map(({className,group, classGroup, id}, i) => (
 							<tr
 								onClick={() => navigate('/admin/class', {state: id})}
 								className={cs.submitNavigate}
 								key={i}
 							>
 								<td>{className}</td>
-								<td>{num}</td>
 								<td>{group}</td>
 								<td>{classGroup}</td>
 							</tr>

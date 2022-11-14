@@ -1,6 +1,6 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import {changePeopleInfo, createPeople} from "../../../../../API";
+import {changePeopleInfo} from "../../../../../API";
 import {useLogin} from "../../../../../hooks/useLogin";
 import {useLocation} from "react-router-dom";
 import cs from './style.module.scss'

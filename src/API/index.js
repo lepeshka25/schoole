@@ -16,3 +16,7 @@ export const changePeopleInfo = (uid, id, idPeople, data) => instance.put(`/${ui
 export const deletePeople = (uid , id , idPeople) => instance.delete(`/${uid}/class/${id}/people/${idPeople}/.json`)
 
 export const deleteClass = (uid , id) => instance.delete(`/${uid}/class/${id}/.json`)
+
+export const getTotalPeople = (uid , id) => instance.get(`/${uid}/class/${id}/num/.json`)
+
+export const changeTotalNum = (uid , id, num) => instance.put(`/${uid}/class/${id}/num/.json`, num)

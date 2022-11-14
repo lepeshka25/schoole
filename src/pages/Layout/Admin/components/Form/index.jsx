@@ -21,7 +21,6 @@ const ModalForm = ({setStateModal}) => {
 							className: value.className,
 							classGroup: value.class,
 							group: value.group.toUpperCase(),
-							num: 0,
 							id: res?.data?.name
 						})
 							.then(res => setUpdate(state => !state))

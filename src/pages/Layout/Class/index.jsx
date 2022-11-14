@@ -18,11 +18,11 @@ const Class = () => {
 	const [card , setCard] = React.useState(null)
 	const [stateChangePeopleModal , setStateChangePeopleModal] = React.useState({state: false , storage: null})
 
-	console.log(stateChangePeopleModal)
-
 	React.useEffect(() => {
 		if(dataBase?.class[location.state]?.people){
 			setState(Object.values(dataBase?.class[location.state]?.people))
+		}else {
+			setState(null)
 		}
 		// eslint-disable-next-line
 	}, [dataBase, select])
@@ -80,6 +80,7 @@ const Class = () => {
 		deletePeople(value[0], value[1], value[2])
 			.then(res => setUpdate(state => !state))
 	}
+
 
 	function onDeleteClass(...value){
 		deleteClass(value[0] , value[1])
